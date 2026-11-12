@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cyber Security Challenge</title>
+  <meta name="description"
+    content="Independent cybersecurity training simulation.">
+  <meta property="og:title"
+    content="Cyber Security Challenge">
+  <meta property="og:description"
+    content="Explore browser security and permissions in a training simulation.">
+  <meta property="og:type" content="website">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1424;
+      color: white;
+    }
+    header {
+      padding: 22px;
+      background: #101e33;
+      border-bottom: 2px solid #ef3340;
+      font-weight: bold;
+    }
+    main {
+      max-width: 750px;
+      margin: 65px auto;
+      padding: 24px;
+      text-align: center;
+    }
+    h1 { font-size: 38px; }
+    h1 span { color: #ff3449; }
+    p { color: #bac5d6; line-height: 1.7; }
+    button {
+      background: #e92f45;
+      color: white;
+      padding: 15px 30px;
+      border: 0;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .panel {
+      margin-top: 28px;
+      padding: 22px;
+      background: #17263d;
+      border-radius: 12px;
+      text-align: left;
+    }
+    .hidden { display: none; }
+    footer {
+      text-align: center;
+      color: #94a3b8;
+      padding: 24px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>CYBER SECURITY | TRAINING</header>
+
+  <main>
+    <h1>Cyber Security <span>Challenge</span></h1>
+    <p>Browser Security & Device Information</p>
+    <p>
+      Explore how websites identify browser and
+      device information in a cybersecurity lesson.
+    </p>
+
+    <button onclick="startChallenge()">
+      Start Challenge
+    </button>
+
+    <section id="results" class="panel hidden">
+      <h2>Device Information</h2>
+      <p id="device"></p>
+      <p id="browser"></p>
+      <p id="platform"></p>
+      <p>
+        Your public IP may be visible to websites.
+        This demo does not collect or store it.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Independent educational simulation.
+    Not affiliated with TryHackMe.
+  </footer>
+
+  <script>
+    function startChallenge() {
+      const ua = navigator.userAgent;
+      const device = /Android|iPhone|iPad|Mobile/i.test(ua)
+        ? "Mobile device" : "Desktop / Laptop";
+
+      const browser = /Edg\//.test(ua) ? "Edge"
+        : /Firefox\//.test(ua) ? "Firefox"
+        : /Chrome\//.test(ua) ? "Chrome"
+        : /Safari\//.test(ua) ? "Safari"
+        : "Other";
+
+      document.getElementById("device").textContent =
+        "Device: " + device;
+      document.getElementById("browser").textContent =
+        "Browser: " + browser;
+      document.getElementById("platform").textContent =
+        "Platform: " + navigator.platform;
+      document.getElementById("results")
+        .classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
